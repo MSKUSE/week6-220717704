@@ -1,26 +1,14 @@
-public class Rectangle {
+import javax.management.ValueExp;
+import java.security.PublicKey;
 
-    private Point topLeft;
-    private int sideA , sideB;
+public class Rectangle extends Shape {
 
-    public Rectangle(Point topLeft, int sideA, int sideB) {
-        this.topLeft = topLeft;
+    private int sideA, sideB;
+
+    public Rectangle(Point location, int sideA, int sideB){
+        super(location);
         setSideA(sideA);
         setSideB(sideB);
-    }
-
-    public Rectangle(Point topLeft, int sideA) {
-        this.topLeft = topLeft;
-        setSideA(sideA);
-        setSideB(sideA);
-    }
-
-    public Point getTopLeft() {
-        return topLeft;
-    }
-
-    public void setTopLeft(Point topLeft) {
-        this.topLeft = topLeft;
     }
 
     public int getSideA() {
@@ -28,11 +16,10 @@ public class Rectangle {
     }
 
     public void setSideA(int sideA) {
-        if (sideA < 0){
+        if (sideA < 0) {
             this.sideA = 0;
-            System.out.println("Side A can't be negative!!");
-        }
-        else {
+            System.out.println("Side A must be a positive number");
+        } else {
             this.sideA = sideA;
         }
     }
@@ -44,15 +31,30 @@ public class Rectangle {
     public void setSideB(int sideB) {
         if (sideB < 0) {
             this.sideB = 0;
-            System.out.println("Side B can't be negative!!");
+            System.out.println("Side B must be a positive number");
         } else {
             this.sideB = sideB;
         }
     }
-    public int perimeter(){
-        return 2 * (sideA + sideB);
+
+    @Override
+    public double perimeter(){
+        System.out.println("Shape Class perimeter Method :");
+        return 2 * sideA + 2 * sideB;
     }
-    public int area(){
+
+    @Override
+    public double area(){
+        System.out.println("shape class Area method :");
         return sideA * sideB;
+    }
+
+    @Override
+    public String toString(){
+        return "Rectangle{" +
+                "sideB=" + this.sideB +
+                ", sideA=" + this.sideA +
+                ", location=" + this.getLocation() +
+                '}';
     }
 }

@@ -1,19 +1,18 @@
-public class Circle {
+public class Circle extends Shape {
 
-    private Point center;
     private int radius;
 
     public Circle(Point center, int radius) {
-        this.center = center;
-        this.radius = radius;
+        super(center);
+        setRadius(radius);
     }
 
     public Point getCenter() {
-        return center;
+        return getLocation();
     }
 
     public void setCenter(Point center) {
-        this.center = center;
+        setLocation(center);
     }
 
     public int getRadius() {
@@ -24,9 +23,28 @@ public class Circle {
         if (radius < 0){
             this.radius = 0;
             System.out.println("Radius can't be negative");
-        }else {
+        } else {
             this.radius = radius;
-
         }
+    }
+
+    @Override
+    public String toString(){
+        return "Circle{" +
+                "center=" + this.getLocation() +
+                ", radius=" + this.radius +
+                '}';
+    }
+
+    @Override
+    public double area() {
+        System.out.println("Shape class area method : ");
+        return Math.PI * this.radius * this.radius;
+    }
+
+    @Override
+    public double perimeter(){
+        System.out.println("Shape class perimeter method : ");
+        return 2 * Math.PI * this.radius;
     }
 }
